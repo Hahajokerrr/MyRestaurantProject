@@ -9,25 +9,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2D3347;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2D3347;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myrestaurantproject.signupController">
     <children>
-        <TextField layoutX="206.0" layoutY="127.0" prefHeight="30.0" prefWidth="184.0" promptText="Enter your username">
+        <TextField fx:id="username" layoutX="206.0" layoutY="127.0" prefHeight="30.0" prefWidth="184.0" promptText="Enter your username">
             <font>
                 <Font size="14.0" />
             </font>
         </TextField>
-        <PasswordField layoutX="206.0" layoutY="185.0" prefHeight="30.0" prefWidth="184.0" promptText="Enter your password">
+        <PasswordField fx:id="password" layoutX="206.0" layoutY="185.0" prefHeight="30.0" prefWidth="184.0" promptText="Enter your password">
             <font>
                 <Font size="14.0" />
             </font>
         </PasswordField>
-        <Label alignment="CENTER" layoutX="205.0" layoutY="305.0" prefHeight="30.0" prefWidth="184.0" style="-fx-background-color: #0099ff;" text="SIGN UP" textFill="WHITE">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Label>
-        <TextField layoutX="206.0" layoutY="239.0" prefHeight="30.0" prefWidth="184.0" promptText="Enter your restaurant name">
+        <TextField fx:id="name" layoutX="206.0" layoutY="239.0" prefHeight="30.0" prefWidth="184.0" promptText="Enter your restaurant name">
             <font>
                 <Font size="14.0" />
             </font>
@@ -47,11 +41,21 @@
                 <Image url="@../../../image/Icon.png" />
             </image>
         </ImageView>
-        <Button layoutX="493.0" layoutY="35.0" mnemonicParsing="false" style="-fx-background-color: #0099ff;" text="Log in" textFill="WHITE" />
+        <Button fx:id="login" layoutX="493.0" layoutY="35.0" mnemonicParsing="false" onAction="#loginAction" style="-fx-background-color: #0099ff;" text="Log in" textFill="WHITE" />
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="185.0" layoutY="48.0" prefHeight="58.0" prefWidth="229.0" text="MY RESTAURANT" textFill="WHITE">
             <font>
                 <Font name="Marlett" size="24.0" />
             </font>
         </Label>
+      <ImageView fx:id="progress" fitHeight="46.0" fitWidth="184.0" layoutX="206.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../image/loading.gif" />
+         </image>
+      </ImageView>
+      <Button fx:id="signup" layoutX="233.0" layoutY="293.0" mnemonicParsing="false" onAction="#signupAction" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: #0099ff;" text="SIGN UP" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>
