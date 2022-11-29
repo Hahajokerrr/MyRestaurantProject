@@ -10,6 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="600.0" style="-fx-background-color: #2D3347;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myrestaurantproject.loginController">
     <children>
@@ -24,8 +25,8 @@
             </font>
         </PasswordField>
         <Button fx:id="signup" layoutX="490.0" layoutY="53.0" mnemonicParsing="false" onAction="#signupAction" style="-fx-background-color: #0099ff;" text="Sign up" textFill="WHITE" />
-        <Button fx:id="login" layoutX="345.0" layoutY="318.0" mnemonicParsing="false" onAction="#loginAction" style="-fx-background-color: #0099ff;" text="Log in" textFill="WHITE" />
-        <CheckBox fx:id="remember" layoutX="210.0" layoutY="322.0" mnemonicParsing="false" text="Remember me" textFill="#a2a4ab" />
+        <Button fx:id="login" layoutX="348.0" layoutY="340.0" mnemonicParsing="false" onAction="#loginAction" style="-fx-background-color: #0099ff;" text="Log in" textFill="WHITE" />
+        <CheckBox fx:id="remember" layoutX="211.0" layoutY="344.0" mnemonicParsing="false" text="Remember me" textFill="#a2a4ab" />
         <ImageView fitHeight="96.0" fitWidth="144.0" layoutX="252.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../../image/Icon.png" />
@@ -55,5 +56,6 @@
                 <Image url="@../../../image/loading.gif" />
             </image>
         </ImageView>
+      <Text fx:id="incorrect" fill="RED" layoutX="203.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username or Password is not correct" />
     </children>
 </AnchorPane>

@@ -16,7 +16,12 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import com.example.myrestaurantproject.DBConnection.DBHandler;
 
 public class signupController implements Initializable {
     @FXML
@@ -37,12 +42,18 @@ public class signupController implements Initializable {
     @FXML
     private ImageView progress;
 
+    private Connection connection;
+    private DBHandler handler;
+    private PreparedStatement pst;
+
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         progress.setVisible(false);
         username.setStyle("-fx-text-inner-color: #a0a2ab");
         password.setStyle("-fx-text-inner-color: #a0a2ab");
         name.setStyle("-fx-text-inner-color: #a0a2ab");
+
+        handler = new DBHandler();
     }
 
     @FXML
@@ -54,6 +65,25 @@ public class signupController implements Initializable {
         });
         pt.play();
 
+        // Saving new user
+        String insert = "INSERT INTO users(username, password, res_name)"
+                + "VALUES(?,?,?)";
+        connection = handler.getConnection();
+        try {
+            pst = connection.prepareStatement(insert);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            pst.setString(1, username.getText());
+            pst.setString(2, password.getText());
+            pst.setString(3, name.getText());
+
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
