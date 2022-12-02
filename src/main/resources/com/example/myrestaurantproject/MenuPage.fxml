@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="347.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myrestaurantproject.menupageController">
+   <children>
+      <Label layoutX="255.0" layoutY="21.0" text="Add new Menu">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="StyleChooser" layoutX="227.0" layoutY="124.0" prefWidth="150.0" promptText="Style" />
+      <ComboBox fx:id="AppetizerChooser" layoutX="77.0" layoutY="183.0" prefWidth="150.0" promptText="Appetizer" />
+      <ComboBox fx:id="SideDishChooser" layoutX="77.0" layoutY="244.0" prefWidth="150.0" promptText="Side Dish" />
+      <ComboBox fx:id="MainCourseChooser" layoutX="377.0" layoutY="183.0" prefWidth="150.0" promptText="Main Course" />
+      <ComboBox fx:id="DesertChooser" layoutX="377.0" layoutY="244.0" prefWidth="150.0" promptText="Dessert" />
+      <Button fx:id="AddButton" layoutX="281.0" layoutY="299.0" mnemonicParsing="false" text="Add!" />
+      <TextField fx:id="MenuName" layoutX="228.0" layoutY="54.0" promptText="Menu Name" />
+   </children>
+</Pane>

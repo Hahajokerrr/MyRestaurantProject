@@ -8,6 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2D3347;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myrestaurantproject.signupController">
     <children>
@@ -57,5 +58,11 @@
             <Font size="14.0" />
          </font>
       </Button>
+      <Text fx:id="usernameLength" fill="RED" layoutX="404.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username must be at least 8 chars" visible="false" />
+      <Text fx:id="passwordLength" fill="RED" layoutX="402.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password must be at least 8 chars and at most 16 char" visible="false" wrappingWidth="181.41796875" />
+      <Text fx:id="resnameFilled" fill="RED" layoutX="404.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaurant name must be filled" visible="false" />
+      <Text fx:id="usernameFilled" fill="RED" layoutX="404.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username must be filled" visible="false" />
+      <Text fx:id="passwordFilled" fill="RED" layoutX="404.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password must be filled" visible="false" />
+      <Text fx:id="usernameExisted" fill="RED" layoutX="403.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username existed" visible="false" />
     </children>
 </AnchorPane>

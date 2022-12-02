@@ -50,6 +50,19 @@ public class loginController implements Initializable {
     private Connection connection;
     private DBHandler handler;
     private PreparedStatement pst;
+    private static loginController instance;
+
+    public loginController() {
+        instance = this;
+    }
+
+    public static loginController getInstance() {
+        return instance;
+    }
+
+    public String getUsername() {
+        return username.getText();
+    }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -63,14 +76,6 @@ public class loginController implements Initializable {
 
     @FXML
     public void loginAction(ActionEvent e) {
-        progress.setVisible(true);
-        PauseTransition pt = new PauseTransition();
-        pt.setDuration(Duration.seconds(1));
-        pt.setOnFinished(ev -> {
-            System.out.print("Login Successful");
-        });
-
-        pt.play();
 
         //Retrieve user information
         connection = handler.getConnection();
@@ -87,8 +92,29 @@ public class loginController implements Initializable {
             while (rs.next()) {
                 count++;
             }
-            if(count == 1) {
+            if(count >= 1) {
                 System.out.println("Login Successful");
+                incorrect.setVisible(false);
+                progress.setVisible(true);
+                PauseTransition pt = new PauseTransition();
+                pt.setDuration(Duration.seconds(1));
+                pt.setOnFinished(ev -> {
+
+                });
+
+                pt.play();
+
+                try {
+                    login.getScene().getWindow().hide();
+                    Stage Home = new Stage();
+                    Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+                    Scene scene = new Scene(root);
+                    Home.setScene(scene);
+                    Home.show();
+                    Home.setResizable(false);
+                } catch (IOException e2) {
+                    e2.printStackTrace();
+                }
             } else {
                 incorrect.setStyle("-fx-text-inner-color: #ff0000");
                 incorrect.setVisible(true);

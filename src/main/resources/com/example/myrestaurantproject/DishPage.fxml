@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myrestaurantproject.dishpageController">
+   <children>
+      <TableView fx:id="dishTable" layoutY="113.0" prefHeight="437.0" prefWidth="719.0">
+        <columns>
+          <TableColumn fx:id="nameColumn" prefWidth="113.60000306367874" text="Dish Name" />
+          <TableColumn fx:id="styleColumn" minWidth="3.20001220703125" prefWidth="83.199951171875" text="Style" />
+            <TableColumn fx:id="typeColumn" prefWidth="141.59999084472656" text="Type" />
+            <TableColumn fx:id="priceColumn" prefWidth="162.4000244140625" text="Price ($)" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="216.7999267578125" text="Description" />
+        </columns>
+      </TableView>
+      <Label layoutX="330.0" layoutY="14.0" text="All Dishes">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="searchDishName" layoutX="27.0" layoutY="71.0" />
+      <Label layoutX="27.0" layoutY="44.0" text="Search by Dish Name" />
+      <ComboBox fx:id="chooseStyle" layoutX="255.0" layoutY="71.0" prefWidth="150.0" promptText="Style" />
+      <ComboBox fx:id="chooseType" layoutX="503.0" layoutY="71.0" prefWidth="150.0" promptText="Type" />
+      <Label layoutX="255.0" layoutY="44.0" text="Choose Style" />
+      <Label layoutX="503.0" layoutY="44.0" text="Choose Type" />
+   </children>
+</AnchorPane>

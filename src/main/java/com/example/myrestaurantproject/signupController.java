@@ -11,14 +11,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import com.example.myrestaurantproject.DBConnection.DBHandler;
@@ -42,6 +44,19 @@ public class signupController implements Initializable {
     @FXML
     private ImageView progress;
 
+    @FXML
+    private Text usernameLength;
+    @FXML
+    private Text usernameFilled;
+    @FXML
+    private Text usernameExisted;
+    @FXML
+    private Text passwordLength;
+    @FXML
+    private Text passwordFilled;
+    @FXML
+    private Text resnameFilled;
+
     private Connection connection;
     private DBHandler handler;
     private PreparedStatement pst;
@@ -56,14 +71,57 @@ public class signupController implements Initializable {
         handler = new DBHandler();
     }
 
+    public int getUsernameError() {
+        int res = 0;
+        String s = username.getText();
+        connection = handler.getConnection();
+        String q1 = "SELECT * from users where username = ?";
+        try {
+            PreparedStatement temp = connection.prepareStatement(q1);
+            temp.setString(1, s);
+            ResultSet rs = temp.executeQuery();
+            int count = 0;
+
+            while (rs.next()) {
+                count++;
+            }
+            if(count >= 1) {
+                res = 3;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if(s.length() == 0) {
+            res = 1;
+        } else if(s.length() < 8) {
+            res = 2;
+        }
+        return res;
+    }
+
+    public int getPasswordError() {
+        int res = 0;
+        String temp = password.getText();
+        if(temp.length() == 0) {
+            res = 1;
+        } else if(temp.length() < 8) {
+            res = 2;
+        }
+        return res;
+    }
+
+    public int getResNameError() {
+        int res = 0;
+        String temp = name.getText();
+        if(temp.length() == 0) {
+            res = 1;
+        }
+        return res;
+    }
+
     @FXML
     public void signupAction(ActionEvent ev) {
-        progress.setVisible(true);
-        PauseTransition pt = new PauseTransition(Duration.seconds(1));
-        pt.setOnFinished(e -> {
-            System.out.println("Sign up Successful");
-        });
-        pt.play();
 
         // Saving new user
         String insert = "INSERT INTO users(username, password, res_name)"
@@ -76,11 +134,75 @@ public class signupController implements Initializable {
         }
 
         try {
-            pst.setString(1, username.getText());
-            pst.setString(2, password.getText());
-            pst.setString(3, name.getText());
+            if(getUsernameError() >= 1 || getPasswordError() >= 1 || getResNameError() >= 1) {
+                System.out.println(getUsernameError() + " " + getPasswordError() + " " + getResNameError());
 
-            pst.executeUpdate();
+                switch (getUsernameError()) {
+                    case 0:
+                        usernameFilled.setVisible(false);
+                        usernameExisted.setVisible(false);
+                        usernameLength.setVisible(false);
+                    case 1:
+                        usernameFilled.setVisible(true);
+                        usernameExisted.setVisible(false);
+                        usernameLength.setVisible(false);
+                        break;
+                    case 2:
+                        usernameLength.setVisible(true);
+                        usernameFilled.setVisible(false);
+                        usernameExisted.setVisible(false);
+                        break;
+                    case 3:
+                        usernameExisted.setVisible(true);
+                        usernameLength.setVisible(false);
+                        usernameFilled.setVisible(false);
+                        break;
+                }
+                switch (getPasswordError()) {
+                    case 0:
+                        passwordFilled.setVisible(false);
+                        passwordLength.setVisible(false);
+                    case 1:
+                        passwordFilled.setVisible(true);
+                        passwordLength.setVisible(false);
+                        break;
+                    case 2:
+                        passwordFilled.setVisible(false);
+                        passwordLength.setVisible(true);
+                        break;
+                }
+                switch (getResNameError()) {
+                    case 0:
+                        resnameFilled.setVisible(false);
+                        break;
+                    case 1:
+                        resnameFilled.setVisible(true);
+                        break;
+                }
+            } else {
+                usernameFilled.setVisible(false);
+                usernameExisted.setVisible(false);
+                usernameLength.setVisible(false);
+                passwordFilled.setVisible(false);
+                passwordLength.setVisible(false);
+                resnameFilled.setVisible(false);
+
+                pst.setString(1, username.getText());
+                pst.setString(2, password.getText());
+                pst.setString(3, name.getText());
+
+
+
+                pst.executeUpdate();
+
+                progress.setVisible(true);
+                PauseTransition pt = new PauseTransition(Duration.seconds(1));
+                pt.setOnFinished(e -> {
+                    //System.out.println("Sign up Successful");
+                    progress.setVisible(false);
+                });
+                pt.play();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

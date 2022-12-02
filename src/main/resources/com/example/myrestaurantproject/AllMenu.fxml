@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="464.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myrestaurantproject.allmenuController">
+   <children>
+      <TableView fx:id="MenuTable" layoutY="82.0" prefHeight="382.0" prefWidth="741.0">
+        <columns>
+          <TableColumn fx:id="MenuNameCol" prefWidth="97.60003507137299" text="Menu Name" />
+          <TableColumn fx:id="AppetizerCol" prefWidth="104.80005645751953" text="Appetizer" />
+            <TableColumn fx:id="MainCourseCol" prefWidth="120.79998779296875" text="Main Course" />
+            <TableColumn fx:id="SideDishCol" prefWidth="155.20001220703125" text="Side Dish" />
+            <TableColumn fx:id="DessertCol" prefWidth="147.19998168945312" text="Dessert" />
+            <TableColumn fx:id="PriceCol" prefWidth="116.79998779296875" text="Price" />
+        </columns>
+      </TableView>
+      <Label layoutX="343.0" layoutY="14.0" text="All Menu">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="SearchBar" layoutX="27.0" layoutY="44.0" promptText="Search for menu" />
+   </children>
+</AnchorPane>

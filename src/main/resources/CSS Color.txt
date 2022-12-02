@@ -1,0 +1,2 @@
+Main Bcg: #2D3347
+Button: #0099ff

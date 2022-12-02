@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="491.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myrestaurantproject.homepageController">
+   <children>
+      <Pane prefHeight="524.0" prefWidth="182.0" style="-fx-background-color: #2D3347;">
+         <children>
+            <ImageView fitHeight="70.0" fitWidth="98.0" layoutX="56.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/Icon.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="29.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MY RESTAURANT">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Line endX="-37.80000686645508" endY="1.52587890625E-5" layoutX="101.0" layoutY="150.0" startX="-100.0" stroke="WHITE" />
+            <Text fill="WHITE" layoutX="17.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to my restaurant. Here you can manage your restaurant business easily and effeciently" wrappingWidth="148.8175811767578" />
+            <Label layoutX="28.0" layoutY="262.0" text="DASHBOARD" textFill="WHITE" />
+            <Button fx:id="AllMenu" layoutX="55.0" layoutY="291.0" mnemonicParsing="false" onAction="#allMenuAction" style="-fx-background-color: #2D3347;" text="ALL MENU" textFill="WHITE" />
+            <Button fx:id="AddReceipt" layoutX="31.0" layoutY="428.0" mnemonicParsing="false" style="-fx-background-color: #2D3347;" text="ADD NEW RECEIPT" textFill="WHITE" />
+            <Button fx:id="AddDish" layoutX="40.0" layoutY="393.0" mnemonicParsing="false" onAction="#addDishAction" style="-fx-background-color: #2D3347;" text="ADD NEW DISH" textFill="WHITE" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="144.0" layoutY="295.0" prefHeight="17.0" prefWidth="22.0" style="-fx-background-color: #3366ff;" text="0" textFill="WHITE" />
+            <Button fx:id="AllDish" layoutX="52.0" layoutY="324.0" mnemonicParsing="false" onAction="#allDishAction" style="-fx-background-color: #2D3347;" text="ALL DISHES" textFill="WHITE" />
+            <Button fx:id="AddMenu" layoutX="36.0" layoutY="357.0" mnemonicParsing="false" style="-fx-background-color: #2D3347;" text="ADD NEW MENU" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Label fx:id="Resname" alignment="CENTER" layoutX="182.0" layoutY="-2.0" prefHeight="64.0" prefWidth="588.0" style="-fx-background-color: #2D3347;" text="Label" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Pane layoutX="182.0" layoutY="62.0" prefHeight="461.0" prefWidth="588.0" style="-fx-background-color: cco;" />
+   </children>
+</AnchorPane>
