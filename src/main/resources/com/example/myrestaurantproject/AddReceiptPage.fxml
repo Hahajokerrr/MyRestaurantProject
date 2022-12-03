@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="460.0" prefWidth="425.0" style="-fx-background-color: #2D3347;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myrestaurantproject.addreceiptController">
+   <children>
+      <ComboBox fx:id="MenuChooser" layoutX="32.0" layoutY="89.0" prefWidth="150.0" promptText="Choose Menu" />
+      <Label layoutX="137.0" layoutY="26.0" text="ADD NEW RECEIPT" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Review" alignment="TOP_LEFT" layoutX="33.0" layoutY="185.0" prefHeight="149.0" prefWidth="358.0" promptText="Review" />
+      <DatePicker fx:id="DatePicker" layoutX="215.0" layoutY="89.0" onAction="#getDate" promptText="Pick a Date" />
+      <ComboBox fx:id="RatingChooser" layoutX="32.0" layoutY="137.0" prefHeight="26.0" prefWidth="90.0" promptText="Rating" />
+      <Button layoutX="191.0" layoutY="384.0" mnemonicParsing="false" onAction="#add" style="-fx-background-color: #0099ff;" text="Add!" textFill="WHITE" />
+      <Text fx:id="Success" fill="GOLD" layoutX="191.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Success!" />
+   </children>
+</AnchorPane>

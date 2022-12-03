@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import javax.security.auth.login.LoginContext;
@@ -33,6 +34,21 @@ public class homepageController implements Initializable {
     @FXML
     private Button AddReceipt;
 
+    @FXML
+    private Text BRMenu;
+
+    @FXML
+    private Text Balance;
+
+    @FXML
+    private Text DishNum;
+
+    @FXML
+    private Text MSMenu;
+
+    @FXML
+    private Text MenuNum;
+
     private int IDInstance;
     private String ResNameInstance;
 
@@ -47,6 +63,96 @@ public class homepageController implements Initializable {
         handler = new DBHandler();
         setUpFisrtTime();
         Resname.setText("Welcome to " + ResNameInstance);
+        setDishNum();
+        setMenuNum();
+        setBRMenu();
+        setMSMenu();
+    }
+
+    public void setDishNum() {
+        connection = handler.getConnection();
+        String q = "SELECT COUNT(DishID)\n" +
+                "FROM Dish;";
+        int temp = 0;
+        try {
+            PreparedStatement t1 = connection.prepareStatement(q);
+            ResultSet rs = t1.executeQuery();
+            while(rs.next()) {
+                temp = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        DishNum.setText("Total number of Dishes: " + temp);
+    }
+
+    public void setMenuNum() {
+        connection = handler.getConnection();
+        String q = "SELECT COUNT(MenuID)\n" +
+                "FROM Menu;";
+        int temp = 0;
+        try {
+            PreparedStatement t1 = connection.prepareStatement(q);
+            ResultSet rs = t1.executeQuery();
+            while(rs.next()) {
+                temp = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        MenuNum.setText("Total number of Menus: " + temp);
+    }
+
+    public void setBRMenu() {
+        connection = handler.getConnection();
+        String q = "SELECT \n" +
+                "     m.MenuName, AVG(r.Rating) average\n" +
+                "FROM\n" +
+                "    Menu m\n" +
+                "        INNER JOIN\n" +
+                "    Receipt r\n" +
+                "WHERE\n" +
+                "    m.menuid = r.menuid\n" +
+                "GROUP BY m.MenuID\n" +
+                "ORDER BY average DESC\n" +
+                "LIMIT 1;";
+        String temp = "";
+        try {
+            PreparedStatement t1 = connection.prepareStatement(q);
+            ResultSet rs = t1.executeQuery();
+            while(rs.next()) {
+                temp = rs.getString(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        BRMenu.setText("Best rated Menu: " + temp);
+    }
+
+    public void setMSMenu() {
+        connection = handler.getConnection();
+        String q = "SELECT \n" +
+                "    MenuName, COUNT(*) served\n" +
+                "FROM\n" +
+                "    Menu m\n" +
+                "        INNER JOIN\n" +
+                "    Receipt r\n" +
+                "WHERE\n" +
+                "    m.menuid = r.menuid\n" +
+                "GROUP BY m.MenuID\n" +
+                "order by served desc\n" +
+                "limit 1;\n";
+        String temp = "";
+        try {
+            PreparedStatement t1 = connection.prepareStatement(q);
+            ResultSet rs = t1.executeQuery();
+            while(rs.next()) {
+                temp = rs.getString(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        MSMenu.setText("Most served Menu: " + temp);
     }
 
     public void setUpFisrtTime() {
@@ -101,6 +207,32 @@ public class homepageController implements Initializable {
             allMenu.setScene(scene);
             allMenu.show();
             allMenu.setResizable(false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addMenuAction() {
+        try {
+            Stage addMenu = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("MenuPage.fxml"));
+            Scene scene = new Scene(root);
+            addMenu.setScene(scene);
+            addMenu.show();
+            addMenu.setResizable(false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addReceiptAction() {
+        try {
+            Stage addReceipt = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("AddReceiptPage.fxml"));
+            Scene scene = new Scene(root);
+            addReceipt.setScene(scene);
+            addReceipt.show();
+            addReceipt.setResizable(false);
         } catch (IOException e) {
             e.printStackTrace();
         }

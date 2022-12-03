@@ -6,20 +6,23 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="347.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myrestaurantproject.menupageController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="347.0" prefWidth="603.0" style="-fx-background-color: #2D3347;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myrestaurantproject.menupageController">
    <children>
-      <Label layoutX="255.0" layoutY="21.0" text="Add new Menu">
+      <Label layoutX="255.0" layoutY="21.0" text="Add new Menu" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <ComboBox fx:id="StyleChooser" layoutX="227.0" layoutY="124.0" prefWidth="150.0" promptText="Style" />
-      <ComboBox fx:id="AppetizerChooser" layoutX="77.0" layoutY="183.0" prefWidth="150.0" promptText="Appetizer" />
-      <ComboBox fx:id="SideDishChooser" layoutX="77.0" layoutY="244.0" prefWidth="150.0" promptText="Side Dish" />
-      <ComboBox fx:id="MainCourseChooser" layoutX="377.0" layoutY="183.0" prefWidth="150.0" promptText="Main Course" />
-      <ComboBox fx:id="DesertChooser" layoutX="377.0" layoutY="244.0" prefWidth="150.0" promptText="Dessert" />
-      <Button fx:id="AddButton" layoutX="281.0" layoutY="299.0" mnemonicParsing="false" text="Add!" />
+      <ComboBox fx:id="AppetizerChooser" layoutX="77.0" layoutY="138.0" prefWidth="150.0" promptText="Appetizer" />
+      <ComboBox fx:id="SideDishChooser" layoutX="77.0" layoutY="208.0" prefWidth="150.0" promptText="Side Dish" />
+      <ComboBox fx:id="MainCourseChooser" layoutX="377.0" layoutY="138.0" prefWidth="150.0" promptText="Main Course" />
+      <ComboBox fx:id="DesertChooser" layoutX="377.0" layoutY="208.0" prefWidth="150.0" promptText="Dessert" />
+      <Button fx:id="AddButton" layoutX="281.0" layoutY="275.0" mnemonicParsing="false" onAction="#add" style="-fx-background-color: #0099ff;" text="Add!" textFill="WHITE" />
       <TextField fx:id="MenuName" layoutX="228.0" layoutY="54.0" promptText="Menu Name" />
+      <Text fx:id="NameFilledError" fill="RED" layoutX="232.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu Name must be filled" />
+      <Text fx:id="NameExistedError" fill="RED" layoutX="249.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu Name existed" />
+      <Text fx:id="Success" fill="#b3b98d" layoutX="281.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Success!" />
    </children>
 </Pane>

@@ -8,6 +8,7 @@ public class Menu {
     private String dessert;
     private int price;
 
+
     public Menu(String name, String appetizer, String mainCourse, String sideDish, String dessert, int price) {
         this.name = name;
         this.appetizer = appetizer;

@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myrestaurantproject.dishpageController">
+<AnchorPane prefHeight="550.0" prefWidth="719.0" style="-fx-background-color: #2D3347;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myrestaurantproject.dishpageController">
    <children>
-      <TableView fx:id="dishTable" layoutY="113.0" prefHeight="437.0" prefWidth="719.0">
+      <TableView fx:id="dishTable" layoutY="113.0" prefHeight="437.0" prefWidth="719.0" style="-fx-background-color: #ccccff;">
         <columns>
           <TableColumn fx:id="nameColumn" prefWidth="113.60000306367874" text="Dish Name" />
           <TableColumn fx:id="styleColumn" minWidth="3.20001220703125" prefWidth="83.199951171875" text="Style" />
@@ -19,9 +19,9 @@
             <TableColumn fx:id="descriptionColumn" prefWidth="216.7999267578125" text="Description" />
         </columns>
       </TableView>
-      <Label layoutX="330.0" layoutY="14.0" text="All Dishes">
+      <Label layoutX="314.0" layoutY="14.0" text="ALL DISHES" textFill="WHITE">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Label>
       <TextField fx:id="searchDishName" layoutX="27.0" layoutY="71.0" />

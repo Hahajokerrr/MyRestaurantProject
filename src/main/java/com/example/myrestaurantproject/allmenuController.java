@@ -52,8 +52,6 @@ public class allmenuController implements Initializable {
 
     private int IDInstance;
 
-    private List<String> menuNameList;
-
     private Connection connection;
     private DBHandler handler;
     private PreparedStatement pst;
