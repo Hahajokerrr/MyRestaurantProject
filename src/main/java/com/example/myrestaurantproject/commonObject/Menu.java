@@ -6,6 +6,8 @@ public class Menu {
     private String mainCourse;
     private String sideDish;
     private String dessert;
+    private double rating;
+    private int totalServed;
     private int price;
 
 
@@ -72,5 +74,21 @@ public class Menu {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public int getTotalServed() {
+        return totalServed;
+    }
+
+    public void setTotalServed(int totalServed) {
+        this.totalServed = totalServed;
     }
 }

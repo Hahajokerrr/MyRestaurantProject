@@ -49,6 +49,9 @@ public class homepageController implements Initializable {
     @FXML
     private Text MenuNum;
 
+    @FXML
+    private Button logOut;
+
     private int IDInstance;
     private String ResNameInstance;
 
@@ -233,6 +236,20 @@ public class homepageController implements Initializable {
             addReceipt.setScene(scene);
             addReceipt.show();
             addReceipt.setResizable(false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void logOutAction() {
+        try {
+            logOut.getScene().getWindow().hide();
+            Stage LogIn = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("LogIn.fxml"));
+            Scene scene = new Scene(root);
+            LogIn.setScene(scene);
+            LogIn.show();
+            LogIn.setResizable(false);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -12,11 +12,11 @@
    <children>
       <TableView fx:id="dishTable" layoutY="113.0" prefHeight="437.0" prefWidth="719.0" style="-fx-background-color: #ccccff;">
         <columns>
-          <TableColumn fx:id="nameColumn" prefWidth="113.60000306367874" text="Dish Name" />
-          <TableColumn fx:id="styleColumn" minWidth="3.20001220703125" prefWidth="83.199951171875" text="Style" />
-            <TableColumn fx:id="typeColumn" prefWidth="141.59999084472656" text="Type" />
-            <TableColumn fx:id="priceColumn" prefWidth="162.4000244140625" text="Price ($)" />
-            <TableColumn fx:id="descriptionColumn" prefWidth="216.7999267578125" text="Description" />
+          <TableColumn fx:id="nameColumn" prefWidth="156.79998779296875" text="Dish Name" />
+          <TableColumn fx:id="styleColumn" minWidth="3.20001220703125" prefWidth="108.0" text="Style" />
+            <TableColumn fx:id="typeColumn" prefWidth="143.20001220703125" text="Type" />
+            <TableColumn fx:id="priceColumn" prefWidth="83.20001220703125" text="Price ($)" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="229.60003662109375" text="Description" />
         </columns>
       </TableView>
       <Label layoutX="314.0" layoutY="14.0" text="ALL DISHES" textFill="WHITE">

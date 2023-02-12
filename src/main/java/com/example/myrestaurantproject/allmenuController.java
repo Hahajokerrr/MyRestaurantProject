@@ -43,6 +43,13 @@ public class allmenuController implements Initializable {
     private TableColumn<Menu, Integer> PriceCol;
 
     @FXML
+    private TableColumn<Menu, Double> RatingCol;
+
+    @FXML
+    private TableColumn<Menu, Integer> TotalServedCol;
+
+
+    @FXML
     private TextField SearchBar;
 
     @FXML
@@ -75,14 +82,31 @@ public class allmenuController implements Initializable {
         MainCourseCol.setCellValueFactory(new PropertyValueFactory<Menu, String>("mainCourse"));
         DessertCol.setCellValueFactory(new PropertyValueFactory<Menu, String>("dessert"));
         PriceCol.setCellValueFactory(new PropertyValueFactory<Menu, Integer>("price"));
+        RatingCol.setCellValueFactory(new PropertyValueFactory<Menu, Double>("rating"));
+        TotalServedCol.setCellValueFactory(new PropertyValueFactory<Menu, Integer>("totalServed"));
 
         connection = handler.getConnection();
         String q = "select  m.MenuName, d.DishName, d.Price, d.TypeID from menu m inner join menudetail md inner join dish d\n" +
                 "where md.MenuID = m.MenuID and md.DishID = d.DishID and d.users_id = ?;";
+        String q2 = "SELECT \n" +
+                "     m.MenuName, AVG(r.Rating) average, COUNT(MenuName) total\n" +
+                "FROM\n" +
+                "    Menu m\n" +
+                "        INNER JOIN\n" +
+                "    Receipt r\n" +
+                "WHERE\n" +
+                "    m.menuid = r.menuid and m.users_id = ?\n" +
+                "GROUP BY m.MenuID;";
         try {
             PreparedStatement pst = connection.prepareStatement(q);
             pst.setString(1, s);
             ResultSet rs = pst.executeQuery();
+
+            PreparedStatement p2 = connection.prepareStatement(q2);
+            p2.setString(1, String.valueOf(getIDInstance()));
+            ResultSet rs2 = p2.executeQuery();
+
+
             while(rs.next()) {
                 for(Menu m : menuList) {
                     if(m.getName().equals(rs.getString(1))) {
@@ -104,6 +128,18 @@ public class allmenuController implements Initializable {
                     }
                 }
             }
+
+
+            while (rs2.next()) {
+                for(Menu m : menuList) {
+                    if(m.getName().equals(rs2.getString(1))) {
+                        m.setRating(rs2.getDouble(2));
+                        m.setTotalServed(rs2.getInt(3));
+                    }
+                }
+            }
+
+
             FilteredList<Menu> filteredList = new FilteredList<>(menuList, b -> true);
             SearchBar.textProperty().addListener((observableValue, oldValue, newValue) -> {
                 filteredList.setPredicate(menu -> {

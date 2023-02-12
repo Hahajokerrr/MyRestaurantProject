@@ -49,7 +49,8 @@
             <Text fx:id="DishNum" layoutX="64.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total number of Dishes:" />
             <Text fx:id="MenuNum" layoutX="64.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total number of Menus:" />
             <Text fx:id="BRMenu" layoutX="64.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Best rated Menu:" />
-            <Text fx:id="MSMenu" layoutX="64.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Most served menu this month:" />
+            <Text fx:id="MSMenu" layoutX="64.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Most served menu this:" />
          </children></Pane>
+      <Button fx:id="logOut" layoutX="681.0" layoutY="18.0" mnemonicParsing="false" onAction="#logOutAction" style="-fx-background-color: #0099ff;" text="Log out" textFill="WHITE" />
    </children>
 </AnchorPane>

@@ -23,6 +23,6 @@
       <TextField fx:id="MenuName" layoutX="228.0" layoutY="54.0" promptText="Menu Name" />
       <Text fx:id="NameFilledError" fill="RED" layoutX="232.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu Name must be filled" />
       <Text fx:id="NameExistedError" fill="RED" layoutX="249.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu Name existed" />
-      <Text fx:id="Success" fill="#b3b98d" layoutX="281.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Success!" />
+      <Text fx:id="Success" fill="GOLD" layoutX="281.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Success!" />
    </children>
 </Pane>
